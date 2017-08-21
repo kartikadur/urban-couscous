@@ -1,0 +1,62 @@
+#card {
+  max-width: 600px;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px #999;
+  border-radius: 2px;
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    .col {
+      flex: 1 1 auto;
+      padding: 10px;
+      small {
+        display: block;
+        font-size: 10px;
+        color: #9a9a9a;
+        border-top: 1px solid #535353;
+        margin-top: 5px;
+      }
+      #card__country-flag {
+        display: block;
+        height: 130px;
+        margin: 10px auto;
+        border: 1px solid #f1f1f1;
+      }
+      #card__country-code {
+        font-size: 110px;
+        text-align: center;
+        margin: 10px auto;
+      }
+      #card__country-name {
+        font-size: 30px;
+        margin: 10px auto;
+      }
+      #card__country-details {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid #535353;
+        border-right: 1px solid #535353;
+        border-radius: 7px;
+        padding: 0;
+        li {
+          margin: 2px 10px;
+          line-height: 1.4;
+        }
+      }
+    }
+    #card__map {
+      width: 100%;
+      height: 150px;
+      margin: 10px;
+      background: #9e9e9e;
+      border: 2px solid #fff;
+    }
+  }
+}
