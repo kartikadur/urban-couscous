@@ -52,11 +52,16 @@
       }
     }
     #card__map {
-      width: 100%;
-      height: 150px;
+      flex: 1;
       margin: 10px;
       background: #9e9e9e;
       border: 2px solid #fff;
     }
+  }
+  @media (max-width: 520px) {
+    .row {
+      flex-direction: column;
+    }
+    
   }
 }

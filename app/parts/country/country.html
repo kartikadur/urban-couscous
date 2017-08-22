@@ -1,11 +1,11 @@
 <section id="card">
   <section class="row">
     <section class="col">
-      <img id="card__country-flag" src="https://restcountries.eu/data/col.svg" alt="Flag of Colombia">
+      <img id="card__country-flag" src="{{flag}}" alt="Flag of Colombia">
       <small>FLAG</small>
     </section>
     <section class="col">
-      <h1 id="card__country-code">COL</h1>
+      <h1 id="card__country-code">{{code}}</h1>
       <small>COUNTRY CODE</small>
     </section>
   </section>
@@ -14,15 +14,18 @@
   </section>
   <section class="row">
     <section class="col">
-      <h2 id="card__country-name">COLOMBIA</h2>
+      <h2 id="card__country-name">{{name}}</h2>
       <small>COUNTRY</small>
     </section>
     <section class="col">
       <ul id="card__country-details">
-        <li>Capital City : Bogota</li>
-        <li>Population : 48759958</li>
-        <li>Area : 1141748.0</li>
-        <li>Region : Americas</li>
+        <li>Capital City : {{capital}}</li>
+        <li>Population : {{population}}</li>
+        <li>Area : {{area}}</li>
+        <li>Region : {{region}}</li>
+        <li>SubRegion : {{subregion}}</li>
+        <li>Languages : {{languages}}</li>
+        <li>Currencies : {{currencies}}</li>
       </ul>
     </section>
   </section>
