@@ -12,8 +12,12 @@ const paths = {
 
 const commonConfig = merge([
   {
+    context: paths.app,
     entry: {
-      app: paths.app,
+      app: './index.js',
+    },
+    resolve: {
+      extensions: ['.js', '.json', '.html', '.scss'],
     },
     output: {
       path: paths.build,
@@ -23,7 +27,6 @@ const commonConfig = merge([
     },
   },
   parts.outputHTML(),
-  parts.loadJS(),
   parts.loadHTML(),
   parts.loadCSS({
     use: [
@@ -38,20 +41,28 @@ const commonConfig = merge([
   parts.loadFiles(),
 ]);
 
-const productionConfig = merge([
-
+const prodConfig = merge([
+  parts.loadJS({ include: paths.app, exclude: [paths.node_modules, /\.(spec|e2e)\.js$/] }),
 ]);
 
-const developmentConfig = merge([
+const devConfig = merge([
+  parts.loadJS({ include: paths.app, exclude: [paths.node_modules, /\.(spec|e2e)\.js$/] }),
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT,
   }),
 ]);
 
+const testConfig = merge([
+  parts.loadJS({ include: paths.app, exclude: [paths.node_modules] }),
+]);
+
 module.exports = (env) => {
-  if (env === 'production') {
-    return merge(commonConfig, productionConfig);
+  if (env === 'production' || env === 'prod') {
+    return merge(commonConfig, prodConfig);
   }
-  return merge(commonConfig, developmentConfig);
+  if (env === 'testing' || env === 'test') {
+    return merge(commonConfig, testConfig);
+  }
+  return merge(commonConfig, devConfig);
 };

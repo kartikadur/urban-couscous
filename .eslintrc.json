@@ -1,15 +1,22 @@
 {
-    "extends": "airbnb-base",
-    "globals": {
-        "window": true,
-        "document": true
-    },
-    "rules": {
-        "import/no-extraneous-dependencies": [
-            2,
-            {
-                "devDependencies": true
-            }
-        ]
-    }
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jasmine": true
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true
+      }
+    ]
+  }
 }

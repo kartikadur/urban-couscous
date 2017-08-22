@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
 
 exports.devServer = ({ host, port, contentBase } = {}) => ({
+  devtool: 'cheap-eval-source-map',
   devServer: {
     contentBase,
     compress: true,

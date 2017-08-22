@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 
-import loader from './parts/loader';
+import loader from './parts/loader/loader';
 // import {
 //   setCard,
 //   setCountry
@@ -59,7 +59,11 @@ const body = document.getElementsByTagName('body')[0];
 //     acronym: 'USAN',
 //     name: 'Union of South American Nations',
 //     otherAcronyms: ['UNASUR', 'UNASUL', 'UZAN'],
-//     otherNames: ['Unión de Naciones Suramericanas', 'União de Nações Sul-Americanas', 'Unie van Zuid-Amerikaanse Naties', 'South American Union']
+//     otherNames: [
+//       'Unión de Naciones Suramericanas',
+//       'União de Nações Sul-Americanas',
+//       'Unie van Zuid-Amerikaanse Naties',
+//       'South American Union']
 //   }],
 // };
 
