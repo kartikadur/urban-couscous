@@ -9,7 +9,8 @@
   },
   "globals": {
     "window": true,
-    "document": true
+    "document": true,
+    "sinon": true
   },
   "rules": {
     "import/no-extraneous-dependencies": [
