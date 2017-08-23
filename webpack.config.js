@@ -6,6 +6,7 @@ const parts = require('./webpack.parts');
 
 const paths = {
   app: path.join(__dirname, 'app'),
+  assets: path.join(__dirname, 'app', 'assets'),
   build: path.join(__dirname, 'build'),
   node_modules: path.join(__dirname, 'node_modules'),
 };
@@ -34,7 +35,7 @@ const commonConfig = merge([
       parts.css(),
       parts.post(),
       parts.sass({
-        includePaths: [paths.node_modules],
+        includePaths: [paths.node_modules, paths.assets],
       }),
     ],
   }),

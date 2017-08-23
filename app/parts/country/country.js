@@ -17,8 +17,8 @@ export const setCountry = data => (
     subregion: data.subregion,
     population: data.population,
     area: data.area,
-    languages: data.languages.reduce((acc, l) => `${l.name}, ${acc}`, ''),
-    currencies: data.currencies.reduce((acc, l) => `${l.name}, ${acc}`, ''),
+    languages: data.languages.map(l => l.name).join(', '),
+    currencies: data.currencies.map(c => c.name).join(', '),
     flag: data.flag,
   })
 );

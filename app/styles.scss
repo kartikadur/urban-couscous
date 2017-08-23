@@ -2,10 +2,29 @@ $fa-font-path: '~font-awesome/fonts';
 @import '~normalize.css/normalize.css';
 @import '~font-awesome/scss/font-awesome';
 
+@import 'variables';
+@import 'mixins';
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto Condensed', sans serif;
-  color: #f1f1f1;
+  color: $primary;
   line-height: 1.2;
-  font-size: 14px;
-  box-sizing: border-box;
+  font-size: 1em;
+  .container {
+    margin: 10px auto 0;
+    padding: 10px;
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    @each $modifier, $breakpoint in $grid__breakpoints--map {
+      @include create-cols($grid__cols, $modifier, $breakpoint);
+    }    
+  }
 }

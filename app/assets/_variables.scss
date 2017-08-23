@@ -1,0 +1,14 @@
+$grid__cols: 12;
+$grid__breakpoint-sm: 0;
+$grid__breakpoint-md: 500;
+$grid__breakpoint-lg: 992;
+$grid__breakpoints--map: (
+  'sm': $grid__breakpoint-sm,
+  'md': $grid__breakpoint-md,
+  'lg': $grid__breakpoint-lg
+);
+
+$primary: #f1f1f1;
+$accent: #222;
+$secondary: #9a9a9a;
+$tertiary: #535353;
