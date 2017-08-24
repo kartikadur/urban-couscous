@@ -5,12 +5,13 @@ small {
   color: $secondary;
   border-top: 1px solid $tertiary;
   margin-top: 5px;
+  font-size: 0.7em !important;
 }
 #card__country-flag {
   display: block;
   height: 9em;
-  border: 1px solid $primary;
   margin: 10px auto;
+  max-width: 100%;
 }
 #card__country-code {
   font-size: 7.5em;
