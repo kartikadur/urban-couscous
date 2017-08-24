@@ -1,19 +1,33 @@
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
-import { loader } from './loader/loader';
+// import { loader } from './loader/loader.component';
 import {
   setCard,
   setCountry,
+} from './country/country.component';
+import {
+  setSearch,
+  setCountryDatalist,
+} from './search/search.component';
+import {
   country,
-} from './country';
-import { createCountryListener, createCountryDatalist } from './search';
+  countries,
+} from './services/country.service';
 
 import './styles.scss';
 
-const body = document.getElementsByTagName('body')[0];
+const search = document.getElementById('search');
+const card = document.getElementById('card');
 
-// Add country card
-body.innerHTML = setCard(setCountry(country));
-// Add loader
-body.innerHTML = loader();
+// Create Search Input and Populate datalist with countries
+search.innerHTML = setSearch();
+setCountryDatalist(countries);
+
+// searchButton.addEventListener((evt) => {
+//   const selectedCountry = searchInput.value;
+//   console.log(evt, selectedCountry);
+// });
+
+
+card.innerHTML = setCard(setCountry(country[0]));

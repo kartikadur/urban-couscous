@@ -40,6 +40,7 @@ const commonConfig = merge([
     ],
   }),
   parts.loadFiles(),
+  parts.optimizeChunks(),
 ]);
 
 const prodConfig = merge([

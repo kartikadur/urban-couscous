@@ -1,7 +1,7 @@
 import Mustache from 'mustache';
 
-import template from './loader.html';
-import './loader.scss';
+import template from './loader.component.html';
+import './loader.component.scss';
 
 const loader = () => Mustache.render(template);
 

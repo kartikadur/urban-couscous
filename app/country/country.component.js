@@ -3,12 +3,12 @@
  */
 import Mustache from 'mustache';
 
-import template from './country.html';
+import template from './country.component.html';
 
-import './country.scss';
+import './country.component.scss';
 
 // Creates a data structure that can be used by the template
-export const setCountry = data => (
+const setCountry = data => (
   Object.assign({}, {
     name: data.name.toUpperCase(),
     capital: data.capital,
@@ -25,6 +25,11 @@ export const setCountry = data => (
 
 
 // Adds data to template, renders it, and returns it.
-export const setCard = data => (
+const setCard = data => (
   Mustache.render(template, data)
 );
+
+module.exports = {
+  setCard,
+  setCountry,
+};

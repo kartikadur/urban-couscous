@@ -1,0 +1,13 @@
+.container {
+  margin: 10px auto 0;
+  padding: 10px;
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    @each $modifier, $breakpoint in $grid__breakpoints--map {
+      @include create-cols($grid__cols, $modifier, $breakpoint);
+    }
+  } 
+}

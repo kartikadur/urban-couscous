@@ -1,0 +1,43 @@
+.input-group {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+
+  & .input-control {
+    border-radius: 2px;
+    border: 1px solid $secondary;
+    color: $accent;
+    padding: 0.5em 0.75em;
+    flex: 1 1 auto;
+    @include font();
+  }
+
+  & .btn {
+    border-radius: 2px;
+    border: 1px solid $secondary;
+    color: $accent;
+    font-weight: bolder;
+    padding: 0.5em 0.75em;
+    transition: all .2s ease-in-out;
+    background-color: $primary;
+    @include font();
+
+    &:hover {
+      background-color: $secondary;
+      color: $primary;
+    }
+    &:active {
+      background-color: $secondary;
+      color: $primary;
+    }
+  }
+
+  & .input-control:not(:first-child), .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  & .input-control:not(:last-child), .btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
