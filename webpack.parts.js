@@ -1,6 +1,7 @@
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
 
 exports.devServer = ({ host, port, contentBase } = {}) => ({
   devtool: 'cheap-eval-source-map',
@@ -79,6 +80,29 @@ exports.loadCSS = ({ include, exclude, use } = {}) => ({
     ],
   },
 });
+
+exports.extractCSS = ({ include, exclude, use } = {}) => {
+  const plugin = new ExtractPlugin({
+    filename: '[name].css',
+  });
+
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(css|scss|sass)$/,
+          include,
+          exclude,
+          use: plugin.extract({
+            use,
+            fallback: 'style-loader',
+          }),
+        },
+      ],
+    },
+    plugins: [plugin],
+  };
+};
 
 exports.loadFiles = ({ testpattern, include, exclude } = {}) => ({
   module: {

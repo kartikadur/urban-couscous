@@ -29,9 +29,18 @@ const commonConfig = merge([
   },
   parts.outputHTML(),
   parts.loadHTML(),
-  parts.loadCSS({
+  // parts.loadCSS({
+  //   use: [
+  //     'style-loader',
+  //     parts.css(),
+  //     parts.post(),
+  //     parts.sass({
+  //       includePaths: [paths.node_modules, paths.assets],
+  //     }),
+  //   ],
+  // }),
+  parts.extractCSS({
     use: [
-      'style-loader',
       parts.css(),
       parts.post(),
       parts.sass({
