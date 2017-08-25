@@ -7,6 +7,8 @@ const parts = require('./webpack.parts');
 const paths = {
   app: path.join(__dirname, 'app'),
   assets: path.join(__dirname, 'app', 'assets'),
+  maps: path.join(__dirname, 'app', 'assets', 'map-svg'),
+  styles: path.join(__dirname, 'app', 'styles'),
   build: path.join(__dirname, 'build'),
   node_modules: path.join(__dirname, 'node_modules'),
 };
@@ -18,7 +20,7 @@ const commonConfig = merge([
       app: './index.js',
     },
     resolve: {
-      extensions: ['.js', '.json', '.html', '.scss'],
+      extensions: ['.js', '.json', '.html', '.scss', '.svg'],
     },
     output: {
       path: paths.build,
@@ -44,12 +46,13 @@ const commonConfig = merge([
       parts.css(),
       parts.post(),
       parts.sass({
-        includePaths: [paths.node_modules, paths.assets],
+        includePaths: [paths.node_modules, paths.styles],
       }),
     ],
   }),
   parts.loadFiles(),
   parts.optimizeChunks(),
+  parts.loadLocalAssets(),
 ]);
 
 const prodConfig = merge([
