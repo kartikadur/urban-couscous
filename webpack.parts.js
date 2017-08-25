@@ -131,14 +131,14 @@ exports.optimizeChunks = () => {
   };
 };
 
-exports.loadLocalAssets = () => {
-  const plugin = new CopyPlugin([
-    { from: 'assets/map-svg', to: 'assets/map-svg' },
-  ]);
-  return {
-    plugins: [plugin],
-  };
-};
+// exports.loadLocalAssets = () => {
+//   const plugin = new CopyPlugin([
+//     { from: 'assets/map-svg', to: 'assets/map-svg' },
+//   ]);
+//   return {
+//     plugins: [plugin],
+//   };
+// };
 
 exports.outputHTML = () => {
   const html = new HTMLPlugin({
