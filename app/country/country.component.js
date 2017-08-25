@@ -13,6 +13,7 @@ const setCountry = data => (
     name: data.name || '',
     capital: data.capital || '',
     code: data.alpha3Code || '',
+    mapCode: `assets/map-svg/${data.alpha2Code.toLowerCase()}.svg` || '',
     region: data.region || '',
     subregion: data.subregion || '',
     population: data.population || '',

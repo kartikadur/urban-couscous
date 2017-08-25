@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
 const ExtractPlugin = require('extract-text-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 exports.devServer = ({ host, port, contentBase } = {}) => ({
   devtool: 'cheap-eval-source-map',
@@ -127,6 +128,15 @@ exports.optimizeChunks = () => {
   });
   return {
     plugins: [optimize],
+  };
+};
+
+exports.loadLocalAssets = () => {
+  const plugin = new CopyPlugin([
+    { from: 'assets/map-svg', to: 'assets/map-svg' },
+  ]);
+  return {
+    plugins: [plugin],
   };
 };
 
