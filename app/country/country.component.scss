@@ -41,13 +41,16 @@ small {
 }
 #card__map {
   background: $secondary;
-  border: 2px solid $primary;
-  img {
+  height: 15em;
+  display: flex;
+
+  img, svg {
     max-width: 100%;
-    max-height: 10em;
+    max-height: 14em;
     display: block;
     margin: auto;
     height: auto;
     width: auto;
+    opacity: 0.75;
   }
 }
