@@ -1,5 +1,5 @@
-import * as D3 from 'd3';
-import * as topojson from 'topojson';
+const D3 = require('d3');
+const topojson = require('topojson');
 
 const jsonData = new Promise((resolve, reject) => {
   D3.json('assets/worldCountryMap.json', (err, data) => {
@@ -22,10 +22,11 @@ const tsvData = new Promise((resolve, reject) => {
 });
 
 const makeMapOf = (countryName, userOptions) => (([map, names]) => {
+  // console.log(countryName);
   // Default options
   const options = Object.assign({
-    container: 'card__map',
-    width: 600,
+    container: '#card__map',
+    width: 560,
     height: 200,
     margin: {
       bottom: 5, left: 5, right: 5, top: 5,
@@ -54,9 +55,9 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
   const countries = topojson.feature(map, map.objects.countries).features;
 
   // Merge country names from names object into countries object using country id
-  countries.map(c => Object.assign(c, names.find(n => +n.id === +c.id)));
+  countries.map(c => Object.assign({}, c, names.find(n => +n.id === +c.id)));
 
-  const chosenCountry = countries.filter(c => c.name === countryName)[0];
+  const chosenCountry = countries.filter(c => c.name === countryName);
 
   g.selectAll('path')
     .data(countries)

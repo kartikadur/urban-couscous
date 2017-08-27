@@ -1,4 +1,5 @@
 import Mustache from 'mustache';
+
 import template from './app.component.html';
 import './app.component.scss';
 
@@ -41,17 +42,15 @@ const bootstrap = () => {
   search.innerHTML = setSearch();
   const searchElements = getSearchElements();
 
+  const mapMaker = Promise.all([jsonData, tsvData]).then(values => values);
+
+
   // Get Country Names
   countryNames()
     .then((data) => {
-      // Create country display
+      // Create country datalist
       setCountryDatalist(searchElements.datalist, data);
-      console.log(jsonData, tsvData);
-      // Create country map
-      // Promise.all([jsonData, tsvData])
-      //   .then((values) => {
-      //     makeMapOf(data.name)(values);
-      //   });
+
       // remove loader
       loaderElement.classList.remove('show');
     })
@@ -73,6 +72,7 @@ const bootstrap = () => {
         // Fetch Completed
         .then((data) => {
           card.innerHTML = setCard(setCountry(data));
+          mapMaker.then(values => makeMapOf(data.name)(values));
           loaderElement.classList.remove('show');
         })
         // Fetch Error

@@ -148,3 +148,12 @@ exports.outputHTML = () => {
     plugins: [html],
   };
 };
+
+exports.loadD3 = () => ({
+  plugins: [
+    new webpack.ProvidePlugin({
+      d3: 'd3',
+      topojson: 'topojson',
+    }),
+  ],
+});
