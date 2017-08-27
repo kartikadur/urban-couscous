@@ -6,7 +6,7 @@
 ### Options
 + Main branch: same as mock up but without image of country in the middle
 + [SVG image branch: same as mock up; uses SVG images for countries](https://github.com/kartikadur/urban-couscous/tree/map-option-svg-image)
-+ D3 Viz branch: same as mock up; uses d3Js to visualize country [WIP]
++ [D3 Viz branch: same as mock up; uses d3Js to visualize country](https://github.com/kartikadur/urban-couscous/tree/map-option-d3js) [WIP]
 
 Attributions: 
 + REST API: from [REST Countries](https://restcountries.eu/)
