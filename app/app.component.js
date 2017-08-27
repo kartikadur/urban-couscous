@@ -18,6 +18,11 @@ import {
 } from './services/country.service';
 
 import { message } from './services/message.service';
+import {
+  jsonData,
+  tsvData,
+  makeMapOf,
+} from './services/map.service';
 
 
 let loaderElement;
@@ -39,7 +44,15 @@ const bootstrap = () => {
   // Get Country Names
   countryNames()
     .then((data) => {
+      // Create country display
       setCountryDatalist(searchElements.datalist, data);
+      console.log(jsonData, tsvData);
+      // Create country map
+      // Promise.all([jsonData, tsvData])
+      //   .then((values) => {
+      //     makeMapOf(data.name)(values);
+      //   });
+      // remove loader
       loaderElement.classList.remove('show');
     })
     .catch((err) => {

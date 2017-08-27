@@ -133,7 +133,7 @@ exports.optimizeChunks = () => {
 
 exports.loadLocalAssets = () => {
   const plugin = new CopyPlugin([
-    { from: 'assets/map-svg', to: 'assets/map-svg' },
+    { from: 'assets', to: 'assets' },
   ]);
   return {
     plugins: [plugin],
