@@ -71,7 +71,9 @@ const bootstrap = () => {
       countryDetails(searchElements.input.value)
         // Fetch Completed
         .then((data) => {
+          // Create info display card
           card.innerHTML = setCard(setCountry(data));
+          // Create map display
           mapMaker.then(values => makeMapOf(data.name)(values));
           loaderElement.classList.remove('show');
         })

@@ -22,7 +22,6 @@ const tsvData = new Promise((resolve, reject) => {
 });
 
 const makeMapOf = (countryName, userOptions) => (([map, names]) => {
-  // console.log(countryName);
   // Default options
   const options = Object.assign({
     container: '#card__map',
@@ -42,7 +41,7 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
     .attr('height', mapHeight);
 
   const g = svg.append('g')
-    .style('stroke-width', '1.5px');
+    .style('stroke-width', '2px');
 
   const projection = D3.geoMercator()
     .scale(100)
@@ -55,9 +54,10 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
   const countries = topojson.feature(map, map.objects.countries).features;
 
   // Merge country names from names object into countries object using country id
-  countries.map(c => Object.assign({}, c, names.find(n => +n.id === +c.id)));
+  countries.map(d => (Object.assign(d, names.filter(n => +n.id === +d.id)[0])));
 
-  const chosenCountry = countries.filter(c => c.name === countryName);
+  // User selected country
+  const chosenCountry = countries.filter(c => c.name === countryName)[0];
 
   g.selectAll('path')
     .data(countries)

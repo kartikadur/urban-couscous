@@ -41,28 +41,22 @@ small {
 }
 #card__map {
   background: $secondary;
-  // border: 2px solid $primary;
-  // img {
-  //   max-width: 100%;
-  //   max-height: 10em;
-  //   display: block;
-  //   margin: auto;
-  //   height: auto;
-  //   width: auto;
-  // }
 
-  .country {
-    fill: $secondary;
+  svg {
+    margin: 5px;
+    
+    .country {
 
-    &.active {
-      fill: $accent;
+      &.active {
+        fill: $accent;
+      }
     }
-  }
 
-  .border {
-    fill: none;
-    stroke: $primary;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    .border {
+      fill: none;
+      stroke: $primary;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
   }
 }
