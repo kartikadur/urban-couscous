@@ -2,8 +2,8 @@
 ![Brower screenshot](images/CountryCardWithD3.png)
 
 ### Options
-+ Main branch: same as mock up; uses D3V4 and SVG to visualize countries
-+ [SVG image branch: same as mock up; uses SVG images for countries](https://github.com/kartikadur/urban-couscous/tree/map-option-svg-image)
++ Main branch: uses D3V4 and SVG to visualize countries
++ [SVG image branch: uses SVG images for countries](https://github.com/kartikadur/urban-couscous/tree/map-option-svg-image)
 
 Attributions: 
 + REST API: from [REST Countries](https://restcountries.eu/)
