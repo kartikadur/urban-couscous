@@ -42,7 +42,7 @@ const bootstrap = () => {
   search.innerHTML = setSearch();
   const searchElements = getSearchElements();
 
-  const mapMaker = Promise.all([jsonData, tsvData]).then(values => values);
+  const mapMaker = Promise.all([jsonData]).then(values => values);
 
 
   // Get Country Names
@@ -74,7 +74,7 @@ const bootstrap = () => {
           // Create info display card
           card.innerHTML = setCard(setCountry(data));
           // Create map display
-          mapMaker.then(values => makeMapOf(data.name)(values));
+          mapMaker.then(values => makeMapOf(data.alpha3Code)(values));
           loaderElement.classList.remove('show');
         })
         // Fetch Error

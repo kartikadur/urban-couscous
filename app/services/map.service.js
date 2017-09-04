@@ -2,7 +2,7 @@ const D3 = require('d3');
 const topojson = require('topojson');
 
 const jsonData = new Promise((resolve, reject) => {
-  D3.json('assets/worldCountryMap.json', (err, data) => {
+  D3.json('assets/worldCountriesMap.json', (err, data) => {
     if (err) {
       reject(err);
     } else {
@@ -21,7 +21,7 @@ const tsvData = new Promise((resolve, reject) => {
   });
 });
 
-const makeMapOf = (countryName, userOptions) => (([map, names]) => {
+const makeMapOf = (cID, userOptions) => (([map]) => {
   // Default options
   const options = Object.assign({
     container: '#card__map',
@@ -41,7 +41,7 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
     .attr('height', mapHeight);
 
   const g = svg.append('g')
-    .style('stroke-width', '2px');
+    .style('stroke-width', '1.5px');
 
   const projection = D3.geoMercator()
     .scale(100)
@@ -54,10 +54,12 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
   const countries = topojson.feature(map, map.objects.countries).features;
 
   // Merge country names from names object into countries object using country id
-  countries.map(d => (Object.assign(d, names.filter(n => +n.id === +d.id)[0])));
+  // countries.map(d => (Object.assign(d, names.filter(n => +n.id === +d.id)[0])));
 
   // User selected country
-  const chosenCountry = countries.filter(c => c.name === countryName)[0];
+  const chosenCountry = countries.filter(c => c.properties.id === cID)[0];
+
+  // console.log(chosenCountry);
 
   g.selectAll('path')
     .data(countries)
@@ -65,7 +67,7 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
     .append('path')
     .attr('d', path)
     .attr('class', (d) => {
-      if (d.name === chosenCountry.name) {
+      if (d.properties.id === cID) {
         return 'country active';
       }
       return 'country';
@@ -86,8 +88,8 @@ const makeMapOf = (countryName, userOptions) => (([map, names]) => {
     const translate = [(mapWidth / 2) - (scale * x), (mapHeight / 2) - (scale * y)];
 
     g.transition()
-      .duration(1000)
       .style('stroke-width', `${1.5 / scale}px`)
+      .duration(1250)
       .attr('transform', `translate(${translate})scale(${scale})`);
   }
 });
