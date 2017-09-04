@@ -62,10 +62,13 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "d3": "^4.10.0",
+    "d3-queue": "^3.0.7",
     "datalist-polyfill": "^1.10.0",
     "font-awesome": "^4.7.0",
     "normalize.css": "^7.0.0",
     "rxjs": "^5.4.3",
+    "topojson": "^3.0.0",
     "whatwg-fetch": "^2.0.3"
   }
 }

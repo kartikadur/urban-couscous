@@ -1,6 +1,3 @@
-/**
- * TODO: Testing
- */
 import Mustache from 'mustache';
 
 import template from './country.component.html';

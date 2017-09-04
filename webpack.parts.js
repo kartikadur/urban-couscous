@@ -131,14 +131,14 @@ exports.optimizeChunks = () => {
   };
 };
 
-// exports.loadLocalAssets = () => {
-//   const plugin = new CopyPlugin([
-//     { from: 'assets/map-svg', to: 'assets/map-svg' },
-//   ]);
-//   return {
-//     plugins: [plugin],
-//   };
-// };
+exports.loadLocalAssets = () => {
+  const plugin = new CopyPlugin([
+    { from: 'assets', to: 'assets' },
+  ]);
+  return {
+    plugins: [plugin],
+  };
+};
 
 exports.outputHTML = () => {
   const html = new HTMLPlugin({
@@ -148,3 +148,12 @@ exports.outputHTML = () => {
     plugins: [html],
   };
 };
+
+exports.loadD3 = () => ({
+  plugins: [
+    new webpack.ProvidePlugin({
+      d3: 'd3',
+      topojson: 'topojson',
+    }),
+  ],
+});

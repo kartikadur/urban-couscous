@@ -1,4 +1,5 @@
 import Mustache from 'mustache';
+
 import template from './app.component.html';
 import './app.component.scss';
 
@@ -18,6 +19,11 @@ import {
 } from './services/country.service';
 
 import { message } from './services/message.service';
+import {
+  jsonData,
+  tsvData,
+  makeMapOf,
+} from './services/map.service';
 
 
 let loaderElement;
@@ -36,10 +42,16 @@ const bootstrap = () => {
   search.innerHTML = setSearch();
   const searchElements = getSearchElements();
 
+  const mapMaker = Promise.all([jsonData]).then(values => values);
+
+
   // Get Country Names
   countryNames()
     .then((data) => {
+      // Create country datalist
       setCountryDatalist(searchElements.datalist, data);
+
+      // remove loader
       loaderElement.classList.remove('show');
     })
     .catch((err) => {
@@ -59,7 +71,10 @@ const bootstrap = () => {
       countryDetails(searchElements.input.value)
         // Fetch Completed
         .then((data) => {
+          // Create info display card
           card.innerHTML = setCard(setCountry(data));
+          // Create map display
+          mapMaker.then(values => makeMapOf(data.alpha3Code)(values));
           loaderElement.classList.remove('show');
         })
         // Fetch Error
